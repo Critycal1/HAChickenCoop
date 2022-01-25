@@ -1,0 +1,79 @@
+type: custom:button-card
+entity: counter.emma_egg_counter_total
+icon: mdi:egg
+name: emma
+hold_action:
+  action: call-service
+  service: increment
+  service_data:
+	entity_id: counter.emma_egg_counter_daily
+  haptic: success
+styles:
+  card:
+	- color: ivory
+	- font-size: 10px
+	- text-shadow: 0px 0px 5px black
+	- text-transform: capitalize
+	- width: 120px
+	- height: 100px
+  grid:
+	- grid-template-areas: '"i total" "n n" "weekly weekly" "daily daily" "ram ram"'
+	- grid-template-columns: 1fr 1fr
+	- grid-template-rows: 1fr min-content min-content min-content min-content
+  name:
+	- font-weight: bold
+	- font-size: 13px
+	- color: >-
+		[[[ if (states["counter.emma_egg_counter_daily"].state >= 1) return
+		"deepskyblue"; ]]]
+	- align-self: middle
+	- justify-self: start
+	- padding-bottom: 4px
+	- padding-left: 5px
+  img_cell:
+	- justify-content: start
+	- align-items: start
+	- margin: none
+  icon:
+	- color: '#bd9162'
+	- width: 70%
+	- margin-top: 5%
+	- margin-left: 10%
+  custom_fields:
+	total:
+	  - align-self: start
+	  - justify-self: end
+	  - margin-top: 12%
+	  - margin-right: 20%
+	weekly:
+	  - padding-bottom: 3px
+	  - padding-left: 5px
+	  - align-self: middle
+	  - justify-self: start
+	daily:
+	  - padding-bottom: 8px
+	  - padding-left: 5px
+	  - align-self: middle
+	  - justify-self: start
+custom_fields:
+  total: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:pound"
+		style="width: 12px; height: 12px;">
+		</ha-icon><span>${entity.state} Eggs</span>`
+	]]]
+  weekly: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:egg"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span> Week: <span style="color: var(--text-color-sensor);">${states['counter.emma_egg_counter_weekly'].state} Eggs</span></span>`
+	]]]
+  daily: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:egg-outline"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span> Day: <span style="color: var(--text-color-sensor);">${states['counter.emma_egg_counter_daily'].state} Egg</span></span>`
+	]]]

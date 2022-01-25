@@ -1,0 +1,119 @@
+type: custom:button-card
+entity: sensor.lumi_lumi_weather_3c3bf103_temperature
+icon: mdi:home-heart
+name: Coop Sensors
+styles:
+  card:
+	- color: ivory
+	- font-size: 10px
+	- text-shadow: 0px 0px 5px black
+	- text-transform: capitalize
+	- width: 175px
+	- height: 100px
+  grid:
+	- grid-template-areas: '"i n" "top top_hum" "bottom bot_hum" "temp ent_hum"'
+	- grid-template-columns: 1fr 1fr
+	- grid-template-rows: 1fr min-content min-content min-content min-content
+  name:
+	- font-weight: bold
+	- font-size: 12px
+	- color: white
+	- align-self: middle
+	- justify-self: start
+	- padding-bottom: 4px
+	- margin-left: '-20%'
+  img_cell:
+	- justify-content: start
+	- align-items: start
+	- margin: none
+  icon:
+	- color: |
+		[[[
+		  if (entity.state < 15) return '#66FFFF';
+		  if (entity.state >= 15 && entity.state < 25) return '#FFFF33';
+		  else return '#FF3333';
+		]]]
+	- width: 70%
+	- margin-top: 0%
+	- margin-left: '-5px'
+  custom_fields:
+	temp:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	top:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	bottom:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	ent_hum:
+	  - padding-bottom: 3px
+	  - margin-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	top_hum:
+	  - padding-bottom: 3px
+	  - margin-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	bot_hum:
+	  - padding-bottom: 3px
+	  - margin-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	  - '--text-color-sensor': '[[[ if (states["sensor.memory_free"].state < 500) return "red"; ]]]'
+custom_fields:
+  temp: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:thermometer"
+		style="width: 12px; height: 12px; color: yellow;">
+		</ha-icon><span>Outside: ${entity.state} °C</span>`
+	]]]
+  top: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:thermometer"
+		style="width: 12px; height: 12px; color: yellow;">
+		</ha-icon><span>Top: <span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_9539a006_temperature'].state} °C</span></span>`
+	]]]
+  bottom: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:thermometer"
+		style="width: 12px; height: 12px; color: yellow;">
+		</ha-icon><span>Bottom: <span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_9339a006_temperature'].state} °C</span></span>`
+	]]]
+  ent_hum: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:water-opacity"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span><span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_3c3bf103_humidity'].state} %</span></span>`
+	]]]
+  top_hum: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:water-opacity"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span><span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_9539a006_humidity'].state} %</span></span>`
+	]]]
+  bot_hum: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:water-opacity"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span><span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_9339a006_humidity'].state} %</span></span>`
+	]]]
