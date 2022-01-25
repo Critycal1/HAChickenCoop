@@ -73,7 +73,6 @@ styles:
 	  - align-self: middle
 	  - justify-self: start
 	  - font-size: 10px
-	  - '--text-color-sensor': '[[[ if (states["sensor.memory_free"].state < 500) return "red"; ]]]'
 custom_fields:
   temp: |
 	[[[
