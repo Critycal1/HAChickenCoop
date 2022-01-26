@@ -1,0 +1,98 @@
+type: custom:button-card
+entity: sensor.processor_temperature
+icon: mdi:raspberry-pi
+name: Raspberry Pi
+styles:
+  card:
+	- color: ivory
+	- font-size: 10px
+	- text-shadow: 0px 0px 5px black
+	- text-transform: capitalize
+	- width: 120px
+	- height: 100px
+  grid:
+	- grid-template-areas: '"i temp" "n n" "cpu cpu" "sd sd" "ram ram"'
+	- grid-template-columns: 1fr 1fr
+	- grid-template-rows: 1fr min-content min-content min-content min-content
+  name:
+	- font-weight: bold
+	- font-size: 13px
+	- color: white
+	- align-self: middle
+	- justify-self: start
+	- padding-bottom: 4px
+	- padding-left: 5px
+  img_cell:
+	- justify-content: start
+	- align-items: start
+	- margin: none
+  icon:
+	- color: |
+		[[[
+		  if (entity.state < 60) return 'lime';
+		  if (entity.state >= 60 && entity.state < 80) return 'orange';
+		  else return 'red';
+		]]]
+	- width: 70%
+	- margin-top: 5%
+	- margin-left: 10%
+  custom_fields:
+	temp:
+	  - align-self: start
+	  - justify-self: end
+	  - margin-top: 8%
+	  - margin-right: 20%
+	cpu:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 9px
+	  - '--text-color-sensor': >-
+		  [[[ if (states["sensor.processor_use_percent"].state > 80) return
+		  "red"; ]]]
+	sd:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 9px
+	  - '--text-color-sensor': >-
+		  [[[ if (states["sensor.disk_use_percent_config"].state > 80) return
+		  "red"; ]]]
+	ram:
+	  - padding-bottom: 7px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 9px
+	  - '--text-color-sensor': '[[[ if (states["sensor.memory_free"].state < 500) return "red"; ]]]'
+custom_fields:
+  temp: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:thermometer"
+		style="width: 12px; height: 12px; color: yellow;">
+		</ha-icon><span>${entity.state}°C</span>`
+	]]]
+  cpu: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:server"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span>CPU: <span style="color: var(--text-color-sensor);">${states['sensor.processor_use_percent'].state}%</span></span>`
+	]]]
+  sd: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:harddisk"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span>SD: <span style="color: var(--text-color-sensor);">${states['sensor.disk_use_percent_config'].state}%</span></span>`
+	]]]
+  ram: |
+	[[[
+	  return `<ha-icon
+		icon="mdi:memory"
+		style="width: 12px; height: 12px; color: deepskyblue;">
+		</ha-icon><span>RAM: <span style="color: var(--text-color-sensor);">${states['sensor.memory_free'].state} MiB</span></span>`
+	]]]

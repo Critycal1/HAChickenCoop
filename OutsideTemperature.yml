@@ -1,0 +1,76 @@
+type: custom:button-card
+icon: mdi:sun-thermometer-outline
+entity: sensor.lumi_lumi_weather_d17b6504_temperature
+name: Outside
+custom_fields:
+  graph:
+	card:
+	  type: custom:mini-graph-card
+	  entities:
+		- sensor.lumi_lumi_weather_d17b6504_temperature
+	  show:
+		icon: false
+		name: false
+		state: false
+	  line_width: 3
+	  color_thresholds:
+		- value: 0
+		  color: '#FFFFFF'
+		- value: 5
+		  color: '#66FFFF'
+		- value: 10
+		  color: '#66FF66'
+		- value: 15
+		  color: '#33FF33'
+		- value: 20
+		  color: '#99FF66'
+		- value: 25
+		  color: '#FFFF33'
+		- value: 30
+		  color: '#FF9933'
+		- value: 35
+		  color: '#FF3333'
+  hu: |
+	[[[
+	  return `<ha-icon
+	  icon="mdi:water-percent:"
+	  style="width:15px;color: skyblue;">
+	  </ha-icon><span style="color: var(--text-color-sensor);">${states['sensor.lumi_lumi_weather_d17b6504_humidity'].state}%</span>`
+	]]]
+  temp: |
+	[[[
+	  return `<ha-icon
+	  icon="mdi:thermometer:"
+	  style="width:15px;color:yellow;">
+	  </ha-icon><span>${entity.state}°C</span>`
+	]]]
+styles:
+  custom_fields:
+	graph:
+	  - overflow: unset
+	hu:
+	  - font-size: 10px
+	temp:
+	  - font-size: 10px
+  card:
+	- overflow: unset
+	- width: 120px
+	- height: 100px
+  grid:
+	- grid-template-areas: '"i n" "temp hu" "graph graph"'
+	- grid-template-columns: 50% 50%
+	- grid-template-rows: 1fr 1fr
+	- overflow: unset
+  name:
+	- font-size: 12px
+	- color: white
+  state:
+	- font-size: 8px
+	- color: white
+  icon:
+	- color: |
+		[[[
+		  if (entity.state < 20) return '#66FFFF';
+		  if (entity.state >= 20 && entity.state < 25) return '#FFFF33';
+		  else return '#FF3333';
+		]]]
