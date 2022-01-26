@@ -1,0 +1,134 @@
+type: custom:button-card
+entity: input_boolean.toggle_automatic_coop
+icon: |
+  [[[
+	if (entity.state == 'on') return 'mdi:timer-cog-outline';        
+	else return 'mdi:cog-off';
+  ]]]
+hold_action:
+  action: |
+	[[[
+	  if (entity.state == 'off' && states['timer.coop_cooldown'].state == 'idle') return 'call-service';        
+	  else return 'none';
+	]]]
+  confirmation:
+	text: |
+	  [[[
+		if (entity.state == 'off' && states['input_boolean.open_coop'].state == 'on') return "Close the coop?"; 
+		if (entity.state == 'off' && states['input_boolean.open_coop'].state == 'off') return "Open the coop?"; 
+		if (states['timer.coop_cooldown'].state != 'idle') return "Motor operating, please wait.";
+		else return "Manual mode is off.";
+	  ]]]
+  service: input_boolean.toggle
+  service_data:
+	entity_id: input_boolean.open_coop
+  haptic: success
+double_tap_action:
+  action: call-service
+  confirmation:
+	text: Toggle water heater?
+  service: switch.toggle
+  service_data:
+	entity_id: switch.shelly_shsw_1_c45bbe7803b8
+  haptic: success
+name: Coop Control
+styles:
+  card:
+	- color: ivory
+	- font-size: 10px
+	- text-shadow: 0px 0px 5px black
+	- text-transform: capitalize
+	- width: 190px
+	- height: 100px
+  grid:
+	- grid-template-areas: '"i n" "mode mode" "state state" "fan heater" '
+	- grid-template-columns: 1fr 1fr
+	- grid-template-rows: 1fr min-content min-content min-content min-content
+  name:
+	- font-weight: bold
+	- font-size: 12px
+	- color: white
+	- align-self: middle
+	- justify-self: start
+	- padding-bottom: 4px
+	- margin-left: '-20%'
+  img_cell:
+	- justify-content: start
+	- align-items: start
+	- margin: none
+  icon:
+	- color: |
+		[[[
+		  if (entity.state == 'on') return 'yellow';        
+		  else return 'gray';
+		]]]
+	- width: 100%
+	- margin-top: 0%
+	- margin-left: '-10px'
+  custom_fields:
+	mode:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	state:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	fan:
+	  - padding-bottom: 3px
+	  - padding-left: 15px
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+	heater:
+	  - padding-bottom: 3px
+	  - padding-left: '-5px'
+	  - align-self: middle
+	  - justify-self: start
+	  - font-size: 10px
+custom_fields:
+  mode: |
+	[[[
+	  return `<span>Automatic mode: ${entity.state}</span>`
+	]]]
+  state: |
+	[[[
+		if (states['timer.coop_cooldown'].state != 'idle') return `<ha-icon
+		icon="mdi:window-shutter-alert"
+		style="width: 15px; height: 15px; color: orange;">
+		</ha-icon><span> Motor operating ...</span>`;  
+		if (states['input_boolean.open_coop'].state == 'on' && states['timer.coop_cooldown'].state == 'idle') return `<ha-icon
+		icon="mdi:window-shutter-open"
+		style="width: 15px; height: 15px; color: yellow;">
+		</ha-icon><span> Chickens released!</span>`;   
+		else return `<ha-icon
+		icon="mdi:window-shutter"
+		style="width: 15px; height: 15px; color: gray;">
+		</ha-icon><span> Chickens captured!</span>`;;
+	]]]
+  fan: |
+	[[[
+		if (states['switch.shelly_shsw_1_e8db84d7d464'].state == 'on') return `<ha-icon
+		icon="mdi:fan"
+		style="width: 15px; height: 15px; color: yellow; animation: rotating 5s linear infinite">
+		</ha-icon><span> Fan on.</span>`;        
+		else return `<ha-icon
+		icon="mdi:fan"
+		style="width: 15px; height: 15px; color: gray;">
+		</ha-icon><span> Fan off.</span>`;;
+	]]]
+  heater: |
+	[[[
+		if (states['switch.shelly_shsw_1_c45bbe7803b8'].state == 'on') return `<ha-icon
+		icon="mdi:radiator"
+		style="width: 15px; height: 15px; color: yellow; animation: blink 2s ease infinite">
+		</ha-icon><span> Heater on.</span>`;        
+		else return `<ha-icon
+		icon="mdi:radiator-off"
+		style="width: 15px; height: 15px; color: gray;">
+		</ha-icon><span> Heater off.</span>`;;
+	]]]
