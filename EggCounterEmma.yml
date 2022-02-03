@@ -4,7 +4,7 @@ icon: mdi:egg
 name: emma
 hold_action:
   action: call-service
-  service: increment
+  service: counter.increment
   service_data:
 	entity_id: counter.emma_egg_counter_daily
   haptic: success
