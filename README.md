@@ -12,7 +12,7 @@ The code in this repo is only for the communication between the motor controller
 
 The YAML in the “Smart Chicken Coop”- folder is to get a custom button card to show the controls in Home Assistant in this style:
 
-![https://i.imgur.com/HYaEfDE.jpg](https://i.imgur.com/HYaEfDE.jpg)
+<img src="https://i.imgur.com/HYaEfDE.jpg" width="200">
 
 The majority of the automations utilize MQTT.
 
@@ -24,8 +24,8 @@ The scale updates the rudimentary database in Home Assistant and the more detail
 
 Database in Home Assistant:
 
-![https://i.imgur.com/Cqf3e1A.jpg](https://i.imgur.com/Cqf3e1A.jpg)
+<img src="https://i.imgur.com/Cqf3e1A.jpg" width="300">
 
 Excerpt from Notion database (only from one chicken):
 
-![https://i.imgur.com/TH8GilB.jpg](https://i.imgur.com/TH8GilB.jpg)
+<img src="https://i.imgur.com/TH8GilB.jpg" width="250">
