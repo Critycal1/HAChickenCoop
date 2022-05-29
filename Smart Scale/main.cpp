@@ -71,7 +71,7 @@ void splashscreen() {
 
 void setup()
 {
-  Serial.begin(9600);
+  //Serial.begin(9600); // Only necessary for debugging.
   pinMode(BUTTON, INPUT_PULLUP);
   pinMode(BUZZER, OUTPUT);
 
