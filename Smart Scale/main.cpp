@@ -230,7 +230,7 @@ else {
 if (!digitalRead(BUTTON))
 {
   previousMillis = millis();
-  Serial.println(previousMillis);
+  //Serial.println(previousMillis);
   while (!digitalRead(BUTTON))
   {
     delay(5);
