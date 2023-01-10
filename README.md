@@ -41,7 +41,7 @@ This way a predator can't apply leverage to open the door in the night.
 For the worst case, there is still a manual mode, that is independant of any wireless communication.<br>
 <img src="https://user-images.githubusercontent.com/77540922/211648037-3c12192c-41c4-44e7-aefd-0c0b920b8965.jpg" width="300"><br>
 Inside this casing is also the microcontroller (NodeMCU), which communicates with Home Assistant and the motor controller,<br>
-which is driven by the NodeMCU and operates the motor.
+which operates the linear motor inside of the coop.
 
 <img src="https://user-images.githubusercontent.com/77540922/211648440-8a786d9b-d129-4045-8705-8ad12b14929e.jpg" width="300">
 
