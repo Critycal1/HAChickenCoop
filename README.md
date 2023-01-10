@@ -81,7 +81,7 @@ Its casing is 3d-printed and the technical specs are the following:
 
 <img src="https://i.imgur.com/Cqf3e1A.jpg" width="300">
 
-If a hen laid a daily egg, the "Daily" counter increments.<br> Also the name of the chicken turns blue, to have an easier overview of who laid this day.<br>
+If a hen laid a daily egg, the "Day" counter increments.<br> Also the name of the chicken turns blue, to have an easier overview of who laid this day.<br>
 In this case it were "Heihei" and "Bella", who laid an egg that day.
 
 The weekly counter keeps track from Monday - Sunday, to have an overview of the respective weekly number of eggs.
