@@ -88,13 +88,13 @@ The weekly counter keeps track from Monday - Sunday, to have an overview of the 
 
 The top right number with the "#" indicates the total number of eggs the hen laid in its life so far.
 
+After sending the data to Home Assistant, the integration "Node-RED" updates the internal total, weekly and daily counter for the respective chicken. Afterwards a [Python script](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/PyScriptHomeAssistant.py) is called, which sends the just updated data and the measured weight of the egg to Notion.
+
 ### Database in Notion:
 
 Excerpt from Notion database (only from one chicken):
 
 <img src="https://i.imgur.com/TH8GilB.jpg" width="250">
-
-After sending the data to Home Assistant, the integration "Node-RED" updates the internal total, weekly and daily counter for the respective chicken. Afterwards a [Python script](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/PyScriptHomeAssistant.py) is called, which sends the just updated data and the measured weight of the egg to Notion.
 
 ### Showcase
 A short video of the scale in action. The left side of the iPad is Notion, the right side is Home Assistant.<br>
