@@ -2,6 +2,8 @@
 <a name="ChickenCoop"></a>
 [Jump to the smart egg scale instead](#EggScale)
 
+This project is a smart chicken coop that utilizes Home Assistant automations to control the opening and closing of the coop door, temperature and humidity inside the coop, and the water heater. <br>The coop also features manual controls and a mechanical safety mechanism to prevent injury to the chickens.<br> This repository includes code and diagrams for the communication between the coop's hardware and Home Assistant, as well as an egg scale system for weighing eggs and sending the data to a Notion database and update the corresponding data in Home Assistant.
+
 ![ChickenCoop](https://user-images.githubusercontent.com/77540922/211643970-cefdf3b4-d908-4894-b6c9-3a609e6877fd.jpg)
 
 ### The coop has the following automations implemented:
