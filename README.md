@@ -58,6 +58,7 @@ The "Emergency_Switch" could also function as a fuse. <br>In my case I simply br
 ## Showcase
 
 https://user-images.githubusercontent.com/77540922/211646261-088ce660-c793-48f9-8b6f-52341e0a7fd4.mov
+
 <a name="EggScale"></a>
 
 # Smart Egg Scale
