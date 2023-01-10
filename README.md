@@ -90,6 +90,9 @@ The top right number with the "#" indicates the total number of eggs the hen lai
 
 After sending the data to Home Assistant, the integration "Node-RED" updates the internal total, weekly and daily counter for the respective chicken. Afterwards a [Python script](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/PyScriptHomeAssistant.py) is called, which sends the just updated data and the measured weight of the egg to Notion.
 
+<img width="600" alt="Node-RED" src="https://user-images.githubusercontent.com/77540922/211668978-3c4c1ee7-16ca-40f5-aa10-2d688f447312.png">
+
+
 ### Database in Notion:
 
 Excerpt from Notion database (only from one chicken):
