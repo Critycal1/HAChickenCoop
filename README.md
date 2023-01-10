@@ -103,6 +103,9 @@ Excerpt from Notion database (only from one chicken):
 A short video of the scale in action. The left side of the iPad is Notion, the right side is Home Assistant.<br>
 I suggest watching the video with sound, the pushbutton has a very satisfying sound!
 
+- A short press (< 500ms) cycles through the chickens
+- A long press (> 500ms) confirms the picked chicken and starts the weighing process. <br>It will only start the process, if there is sufficient weight on the scale.
+
 https://user-images.githubusercontent.com/77540922/211641995-b40bc66f-76ae-48fd-a86e-6386c940e03b.mov
 
 
