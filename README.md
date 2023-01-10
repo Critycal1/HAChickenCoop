@@ -1,8 +1,10 @@
 # Smart Chicken Coop
+<a name="ChickenCoop"></a>
+[Jump to the smart egg scale instead](#EggScale)
 
-### Smart Chicken Coop
+![ChickenCoop](https://user-images.githubusercontent.com/77540922/211643970-cefdf3b4-d908-4894-b6c9-3a609e6877fd.jpg)
 
-The coop has the following automations implemented:
+### The coop has the following automations implemented:
 
 - Automatic opening/closing for either time or sunstate
 - Turning on/off fans at either time, humidity setpoint or temperature setpoint
@@ -16,9 +18,51 @@ The YAML in the “Smart Chicken Coop”- folder is to get a custom button card 
 
 The majority of the automations utilize MQTT.
 
-The water heater is connected via a Shelly. 
+The water heater is connected via a Shelly.
 
-## Smart Egg Scale
+<img src="https://user-images.githubusercontent.com/77540922/211644115-695d3e9c-8bbd-4d21-b2df-8a173cb2ed62.jpg" width="300">
+
+On the right is the mounted linear motor, which is connected via a steel wire to the chicken door.<br>
+It is a safety precaution, so that if a chicken would stand under the door while it is closing,<br>
+the door won't crush the chicken.
+
+To make it predator proof, the door doesn't sit flush with the opening on the inside, but closes a couple of centimeters more.<br>
+This way a predator can't apply leverage to open the door in the night.
+
+
+## Door mechanism
+
+<img src="https://user-images.githubusercontent.com/77540922/211645664-50ac3cf4-e50d-41b5-a5ad-9d8228419ad1.jpeg" width="300">
+
+## Electronics and manual mode
+
+For the worst case, there is still a manual mode, that is independant of any wireless communication.<br>
+<img src="https://user-images.githubusercontent.com/77540922/211648037-3c12192c-41c4-44e7-aefd-0c0b920b8965.jpg" width="300"><br>
+Inside this casing is also the microcontroller (NodeMCU), which communicates with Home Assistant and the motor controller,<br>
+which is driven by the NodeMCU and operates the motor.
+
+<img src="https://user-images.githubusercontent.com/77540922/211648440-8a786d9b-d129-4045-8705-8ad12b14929e.jpg" width="300">
+
+## Circuit diagram and PCB
+
+Click on the desired image to enlarge it.
+
+<img width="300" alt="PCB_3d" src="https://user-images.githubusercontent.com/77540922/211649760-f89fc387-0799-48d0-8d4d-cb612483e8b7.png">
+
+The "Emergency_Switch" could also function as a fuse. <br>In my case I simply bridged it, because my fuse is in the supply line, which originates in another box.
+
+<img width="330" alt="PCB_3d" src="https://user-images.githubusercontent.com/77540922/211649835-32c1a86a-2395-438b-a334-37786bc39b11.png"><img width="300" alt="Layout" src="https://user-images.githubusercontent.com/77540922/211649880-fd3308bb-dd9e-405e-8375-cf2debd1b71c.png">
+
+
+
+## Showcase
+
+https://user-images.githubusercontent.com/77540922/211646261-088ce660-c793-48f9-8b6f-52341e0a7fd4.mov
+<a name="EggScale"></a>
+
+# Smart Egg Scale
+
+[Jump back to the coop](#ChickenCoop)
 
 <img src="https://i.imgur.com/UQZohLw.jpg" width="400">
 
