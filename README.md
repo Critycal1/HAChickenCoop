@@ -55,9 +55,20 @@ The "Emergency_Switch" could also function as a fuse. <br>In my case I simply br
 
 <img width="330" alt="PCB_3d" src="https://user-images.githubusercontent.com/77540922/211649835-32c1a86a-2395-438b-a334-37786bc39b11.png"><img width="300" alt="Layout" src="https://user-images.githubusercontent.com/77540922/211649880-fd3308bb-dd9e-405e-8375-cf2debd1b71c.png">
 
-
-
 ## Showcase
+
+In this video the fans get turned off, as soon as the door is closing and turned on, when the door is opening.<br>
+The UI is Home Assistant with customized cards and prompts. <br>
+Next to the coop door card are the three temperature readings which are responsible for triggering certain automations if wanted.
+
+- A short click on the coop control card switches between manual and automatic mode.<br> In automatic mode it is not possible to send a manual opening signal to the door, to prevent accidental opening
+- A double click toggles the water heater, which also activates if the temperature outside is -1°C for more than 30 minutes and gets turned off, if the temperature outside is more than +1°C
+- A long press activates the door operating mechanism, depending on its current state
+
+Not relevant for the coop but also shown in the video is the incrementing of the egg counter. <br>
+A long press on a specific chickens triggers the incrementation of the daily counter, which increases the weekly and total counter as well. <br>
+However, this process is automated with the egg scale, which follows after the showcase.
+
 
 https://user-images.githubusercontent.com/77540922/211646261-088ce660-c793-48f9-8b6f-52341e0a7fd4.mov
 
@@ -70,6 +81,7 @@ https://user-images.githubusercontent.com/77540922/211646261-088ce660-c793-48f9-
 <img src="https://i.imgur.com/UQZohLw.jpg" width="400">
 
 The scale updates the rudimentary database in Home Assistant and the more detailed database in Notion.<br>
+It communicates with Home Assistant via MQTT as well. It has an UI which guides the user through the weighing process.<br>
 Its casing is 3d-printed and the technical specs are the following:
 
 - Wemos D1 Mini (ESP8266)
@@ -77,7 +89,10 @@ Its casing is 3d-printed and the technical specs are the following:
 - 0.96 inch I2C OLED (SSD1306)
 - HX711 Load Cell 1kg
 
-https://user-images.githubusercontent.com/77540922/211687572-f6f40f80-dadf-4388-a42b-39516a48c576.mp4
+[Microcontroller code.](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/main.cpp)
+
+
+https://user-images.githubusercontent.com/77540922/211751016-a1f242b3-e970-45fb-a353-408c5f9c9945.mp4
 
 ### Database in Home Assistant:
 
@@ -90,7 +105,7 @@ The weekly counter keeps track from Monday - Sunday, to have an overview of the 
 
 The top right number with the "#" indicates the total number of eggs the hen laid in its life so far.
 
-After sending the data to Home Assistant, the integration "Node-RED" updates the internal total, weekly and daily counter for the respective chicken. Afterwards a [Python script](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/PyScriptHomeAssistant.py) is called, which sends the just updated data and the measured weight of the egg to Notion.
+After sending the data to Home Assistant, the integration "Node-RED" updates the internal total, weekly and daily counter for the respective chicken. At the end of the flow a [Python script](https://github.com/Critycal1/HAChickenCoop/blob/master/Smart%20Scale/PyScriptHomeAssistant.py) is called, which sends the just updated data and the measured weight of the egg to Notion.
 
 <img width="600" alt="Node-RED" src="https://user-images.githubusercontent.com/77540922/211668978-3c4c1ee7-16ca-40f5-aa10-2d688f447312.png">
 
@@ -105,8 +120,8 @@ Excerpt from Notion database (only from one chicken):
 A short video of the scale in action. The left side of the iPad is Notion, the right side is Home Assistant.<br>
 I suggest watching the video with sound, the pushbutton has a very satisfying sound!
 
-- A short press (< 500ms) cycles through the chickens
-- A long press (> 500ms) confirms the picked chicken and starts the weighing process. <br>It will only start the process, if there is sufficient weight on the scale.
+- A short press (< 600ms) cycles through the chickens
+- A long press (> 600ms) confirms the picked chicken and starts the weighing process. <br>It will only start the process, if there is sufficient weight on the scale.
 
 https://user-images.githubusercontent.com/77540922/211641995-b40bc66f-76ae-48fd-a86e-6386c940e03b.mov
 
