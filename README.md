@@ -77,6 +77,8 @@ Its casing is 3d-printed and the technical specs are the following:
 - 0.96 inch I2C OLED (SSD1306)
 - HX711 Load Cell 1kg
 
+https://user-images.githubusercontent.com/77540922/211687572-f6f40f80-dadf-4388-a42b-39516a48c576.mp4
+
 ### Database in Home Assistant:
 
 <img src="https://i.imgur.com/Cqf3e1A.jpg" width="300">
